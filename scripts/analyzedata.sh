@@ -2,7 +2,7 @@
 
 echo Running first script;
 
-cd /home/ubuntu/YouTube-Data-Analysis/hadoopjars;
+cd /home/divyanshu/YouTube-Data-Analysis/hadoopjars;
 
 /opt/hadoop/bin/hadoop fs -rm -r /outcategory;
 
@@ -22,7 +22,7 @@ echo Hadoop Jobs Ended;
 
 echo Running sorting tasks;
 
-cd /home/ubuntu/YouTube-Data-Analysis/output;
+cd /home/divyanshu/YouTube-Data-Analysis/output;
 
 rm outcategory.tsv;
 
@@ -36,11 +36,11 @@ rm outupl.tsv;
 
 rm outvie.tsv;
 
-/opt/hadoop/bin/hadoop fs -copyToLocal /outcategory/part-r-00000 '/home/ubuntu/YouTube-Data-Analysis/output/outcat.tsv';
+/opt/hadoop/bin/hadoop fs -copyToLocal /outcategory/part-r-00000 '/home/divyanshu/YouTube-Data-Analysis/output/outcat.tsv';
 
-/opt/hadoop/bin/hadoop fs -copyToLocal /outuploader/part-r-00000 '/home/ubuntu/YouTube-Data-Analysis/output/outupl.tsv';
+/opt/hadoop/bin/hadoop fs -copyToLocal /outuploader/part-r-00000 '/home/divyanshu/YouTube-Data-Analysis/output/outupl.tsv';
 
-/opt/hadoop/bin/hadoop fs -copyToLocal /outview/part-r-00000 '/home/ubuntu/YouTube-Data-Analysis/output/outvie.tsv';
+/opt/hadoop/bin/hadoop fs -copyToLocal /outview/part-r-00000 '/home/divyanshu/YouTube-Data-Analysis/output/outvie.tsv';
 
 sort -t$'\t' -n -k2 -r outcat.tsv | head -n5 > outcategory.tsv;
 

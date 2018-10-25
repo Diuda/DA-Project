@@ -21,7 +21,7 @@ io.sockets.on('connection', function (socket) {
 		socket.emit('getting data', "fetching data");
 		searchapi.clickedSearchButton(time,function(finaldata){
 				if(finaldata == "success"){
-					child = exec('/home/ubuntu/YouTube-Data-Analysis/scripts/getdata.sh',function(error,stdout,stderr){
+					child = exec('/home/divyanshu/YouTube-Data-Analysis/scripts/getdata.sh',function(error,stdout,stderr){
 			if (error) {
 				console.error(error);
 				socket.emit('getting data', "failed");
@@ -45,7 +45,7 @@ io.sockets.on('connection', function (socket) {
 		//Execute Hadoop script
 		 //For shell script 
 		
-		child = exec('/home/ubuntu/YouTube-Data-Analysis/scripts/analyzedata.sh',function(error,stdout,stderr){
+		child = exec('/home/divyanshu/YouTube-Data-Analysis/scripts/analyzedata.sh',function(error,stdout,stderr){
 			var resultdata = {};
 			if (error) {
 				console.error(error);
@@ -66,13 +66,13 @@ io.sockets.on('connection', function (socket) {
 		console.log('stdout: ' + stdout); 
 		console.log('stderr: ' + stderr);
 		//Execute all command and then read tsv code
-		var categtsv = fs.readFileSync('/home/ubuntu/YouTube-Data-Analysis/output/outcategory.tsv','utf8');
+		var categtsv = fs.readFileSync('/home/divyanshu/YouTube-Data-Analysis/output/outcategory.tsv','utf8');
 		//var categtsv = fs.readFileSync('./../output/outcategory.tsv','utf8');
 		var categheaders = ["Category","Count"];
-		var uploadertsv = fs.readFileSync('/home/ubuntu/YouTube-Data-Analysis/output/outuploader.tsv','utf8');
+		var uploadertsv = fs.readFileSync('/home/divyanshu/YouTube-Data-Analysis/output/outuploader.tsv','utf8');
 		//var uploadertsv = fs.readFileSync('./../output/outuploader.tsv','utf8');
 		var uploaderheaders = ["Uploader","Count"];
-		var viewtsv = fs.readFileSync('/home/ubuntu/YouTube-Data-Analysis/output/outview.tsv','utf8');
+		var viewtsv = fs.readFileSync('/home/divyanshu/YouTube-Data-Analysis/output/outview.tsv','utf8');
 		//var viewtsv = fs.readFileSync('./../output/outview.tsv','utf8');
 		var viewheaders = ["Title","Count"];
 
@@ -120,6 +120,6 @@ io.sockets.on('connection', function (socket) {
 
 	
 	
-server.listen(8080);
+server.listen(8081);
 
-console.log('Server is running at port 8080');
+console.log('Server is running at port 3000');
